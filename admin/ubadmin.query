@@ -1,0 +1,20 @@
+#!/usr/bin/sh
+# Shellscript: ubadmin.query
+# Description: All Databases - Status
+#              Admin Script Version: EE
+#              For PROGRESS release: 11.3
+#
+# %Z% SCCS-Id:%P% %I% %G% %U% tkl
+# REVISION: EE   LAST MODIFIED: 12 Aug 2015  BY: HP/RDU
+
+environmentTypeList="qa itg dis prd"
+moduleId="$(echo "$(basename "${0}")" | awk 'BEGIN{FS="_"}{gsub("\.","_"); print $1}')"
+moduleAction="$(echo "$(basename "${0}")" | awk 'BEGIN{FS="_"}{gsub("\.","_"); print $2}')"
+
+adminPath="$(dirname "${0}")"
+
+for environmentType in ${environmentTypeList}
+do
+   [ -f "${adminPath}/${moduleId}_${environmentType}.${moduleAction}" ] && \
+   ${adminPath}/${moduleId}_${environmentType}.${moduleAction}
+done

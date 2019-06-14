@@ -1,0 +1,5 @@
+/opt/shared/home/ygo/admin/ubadmin.query
+echo "\nAI Archive on Production"
+/opt/shared/home/ygo/admin/checkAI
+echo "\nIndigoserve Import Process"
+/opt/qadee/is/prd/bin/iaccds -ve impCM status 2>/dev/null
