@@ -1,0 +1,9 @@
+#send monthly log to siaki.michal@hp.com
+
+full_file_name=`ls -ltr /opt/shared/is/prd/log/ismcacc* | tail -1 | awk '{print $9}'`
+echo $full_file_name
+
+file_name=`echo $full_file_name | awk -F"/" '{print $NF}'`
+#email with attachment
+uuencode $full_file_name $file_name | mailx -m -s "Monthly Log"  -r govindraju.y@hp.com michal.siaki@hp.com
+uuencode $full_file_name $file_name | mailx -m -s "Monthly Log"  -r govindraju.y@hp.com govindraju.y@hp.com

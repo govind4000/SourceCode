@@ -1,0 +1,40 @@
+#!/usr/bin/sh
+# Shellscript: csi_prd.ubadmin
+# Description: Environment ubroker - CSS Internal
+#              Admin Script Version: EE
+#              For PROGRESS release: 11.3
+#
+# %Z% SCCS-Id:%P% %I% %G% %U% tkl
+# REVISION: EE   LAST MODIFIED: 12 Aug 2015  BY: HP/RDU
+
+applicationId="$(echo "$(basename "${0}")" | awk 'BEGIN{FS="_"}{gsub("\.","_"); print $1}')"
+environmentType="$(echo "$(basename "${0}")" | awk 'BEGIN{FS="_"}{gsub("\.","_"); print $2}')"
+moduleId="$(echo "$(basename "${0}")" | awk 'BEGIN{FS="_"}{gsub("\.","_"); print $3}')"
+environment="${applicationId}_${environmentType}"
+cssEnvironment="csi_${environmentType}"
+mfsAppserver="mfs_${environmentType}"
+scpAppserver="scp_${environmentType}"
+
+adminPath="$(dirname "${0}")"
+
+scriptPath="/opt/qadee/local/bin"
+psd="${scriptPath}/psd background"
+
+moduleAction="${1}"
+case "${moduleAction}" in  
+   "status")
+      moduleAction="status"
+   ;;
+   "query")
+      moduleAction="query"
+   ;;  
+   *)
+      echo "Usage: $(basename ${0}) ( start | stop | status )"
+      exit 1
+   ;;
+esac
+
+${psd}   ${environment}_css   as       ${environment}_css_as      ${moduleAction}
+${psd}   ${environment}_css   ws       ${environment}_css_ws      ${moduleAction}
+${psd}   ${cssEnvironment}_css   ws    ${mfsAppserver}_css_ws     ${moduleAction}
+${psd}   ${cssEnvironment}_css   ws    ${scpAppserver}_main_ws    ${moduleAction}

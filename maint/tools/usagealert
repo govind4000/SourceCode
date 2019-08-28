@@ -1,0 +1,9 @@
+
+cd /opt/shared/dbeE
+dbList="$(ls -1d *|awk -F"/" '{print $1}')"
+
+for db in $dbList
+do
+   echo $db
+   psd $db dbinfo usagealert
+done

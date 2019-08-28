@@ -1,0 +1,447 @@
+# @(#)B.11.31_LRservices $Revision: 1.32.214.7 $ $Date: 97/09/10 14:50:42 $
+#
+# This file associates official service names and aliases with
+# the port number and protocol the services use.  
+#
+# Some of the services represented below are not supported on HP-UX.
+# They are provided solely as a reference.
+#
+# The form for each entry is:
+# <official service name>  <port number/protocol name>  <aliases>
+#
+# See the services(4) manual page for more information.
+# Note: The entries cannot be preceded by a blank space.
+#
+tcpmux         1/tcp                 # TCP port multiplexer (RFC 1078)
+echo           7/tcp                 # Echo
+echo           7/udp                 #
+discard        9/tcp  sink null      # Discard
+discard        9/udp  sink null      #
+systat        11/tcp  users          # Active Users
+daytime       13/tcp                 # Daytime
+daytime       13/udp                 #
+qotd          17/tcp  quote          # Quote of the Day
+chargen       19/tcp  ttytst source  # Character Generator
+chargen       19/udp  ttytst source  #
+ftp-data      20/tcp                 # File Transfer Protocol (Data)
+ftp           21/tcp                 # File Transfer Protocol (Control)
+telnet        23/tcp                 # Virtual Terminal Protocol
+smtp          25/tcp                 # Simple Mail Transfer Protocol
+time          37/tcp  timeserver     # Time
+time          37/udp  timeserver     #
+rlp           39/udp  resource       # Resource Location Protocol
+whois         43/tcp  nicname        # Who Is
+domain        53/tcp  nameserver     # Domain Name Service
+domain        53/udp  nameserver     #
+bootps        67/udp                 # Bootstrap Protocol Server
+bootpc        68/udp                 # Bootstrap Protocol Client
+tftp          69/udp                 # Trivial File Transfer Protocol
+rje           77/tcp  netrjs         # private RJE Service
+finger        79/tcp                 # Finger
+http          80/tcp  www            # World Wide Web HTTP
+http          80/udp  www            # World Wide Web HTTP
+link          87/tcp  ttylink        # private terminal link
+supdup        95/tcp                 #
+hostnames    101/tcp  hostname       # NIC Host Name Server
+tsap         102/tcp iso_tsap iso-tsap # ISO TSAP (part of ISODE)
+pop          109/tcp postoffice pop2 # Post Office Protocol - Version 2
+pop3         110/tcp  pop-3          # Post Office Protocol - Version 3
+portmap      111/tcp  sunrpc         # SUN Remote Procedure Call
+portmap      111/udp  sunrpc         #
+auth         113/tcp  authentication ident # Authentication Service
+sftp         115/tcp                 # Simple File Transfer Protocol
+uucp-path    117/tcp                 # UUCP Path Service
+nntp         119/tcp  readnews untp  # Network News Transfer Protocol
+ntp          123/udp                 # Network Time Protocol
+netbios_ns   137/tcp                 # NetBIOS Name Service
+netbios_ns   137/udp                 #
+netbios_dgm  138/tcp                 # NetBIOS Datagram Service
+netbios_dgm  138/udp                 #
+netbios_ssn  139/tcp                 # NetBIOS Session Service
+netbios_ssn  139/udp                 #
+bftp         152/tcp                 # Background File Transfer Protocol
+snmp         161/udp  snmpd          # Simple Network Management Protocol Agent
+snmp-trap    162/udp  trapd          # Simple Network Management Protocol Traps
+xdmcp        177/tcp                 # X Display Manager Control Protocol
+xdmcp        177/udp                 # X Display Manager Control Protocol
+bgp          179/tcp                 # Border Gateway Protocol
+# PV performance tool services entries
+pvserver     382/tcp    # PV server
+ovbbccb      383/tcp    # OV Communication Broker
+svrloc       427/tcp    # Server Location
+svrloc       427/udp    # Server Location
+# Ports for IPSec
+isakmp       500/tcp  isakmp         # IPSec Key Management (ISAKMP)
+isakmp       500/udp  isakmp         # IPSec Key Management (ISAKMP)
+#
+# UNIX services
+#
+biff         512/udp  comsat         # mail notification
+exec         512/tcp                 # remote execution, passwd required
+login        513/tcp                 # remote login
+who          513/udp  whod           # remote who and uptime
+shell        514/tcp  cmd            # remote command, no passwd used
+syslog       514/udp                 # remote system logging
+printer      515/tcp  spooler        # remote print spooling
+talk         517/udp                 # conversation
+ntalk        518/udp                 # new talk, conversation
+route        520/udp  router routed  # routing information protocol
+efs          520/tcp                 # Extended file name server
+timed        525/udp  timeserver     # remote clock synchronization
+tempo        526/tcp  newdate        #
+courier      530/tcp  rpc            #
+conference   531/tcp  chat           #
+netnews      532/tcp  readnews       #
+netwall      533/udp                 # Emergency broadcasting
+uucp         540/tcp  uucpd          # uucp daemon
+dhcpv6-client   546/tcp              # DHCPv6 Client
+dhcpv6-client   546/udp              # DHCPv6 Client
+dhcpv6-server   547/tcp              # DHCPv6 Server
+dhcpv6-server   547/udp              # DHCPv6 Server
+remotefs     556/tcp  rfs_server rfs # Brunhoff remote filesystem 
+ingreslock  1524/tcp                 # 
+#
+# Other HP-UX services
+#
+lansrm       570/udp                 # SRM/UX Server
+DAServer     987/tcp                 # SQL distributed access
+instl_boots 1067/udp                 # installation bootstrap protocol server
+instl_bootc 1068/udp                 # installation bootstrap protocol client
+nfsd-keepalive 1110/udp              # Client status info
+nfsd-status    1110/tcp              # Cluster status info
+msql        1111/tcp                 # Mini SQL database server
+hacl-qs	    1238/tcp        	     # HA cluster Quorum Server
+hacl-qs	    1238/udp                 # HA cluster Quorum Server
+rlb         1260/tcp                 # remote loopback diagnostic
+clvm-cfg    1476/tcp                 # HA LVM configuration
+diagmond    1508/tcp                 # Diagnostic System Manager
+nft         1536/tcp                 # NS network file transfer
+sna-cs      1553/tcp                 # SNAplus client/server
+sna-cs      1553/udp                 # SNAplus client/server
+ncpm-pm     1591/udp                 # NCPM Policy Manager
+ncpm-hip    1683/udp                 # NCPM Host Information Provider
+cvmon       1686/udp                 # Clusterview cvmon-cvmap communication
+registrar   1712/tcp                 # resource monitoring service
+registrar   1712/udp                 # resource monitoring service
+ncpm-ft     1744/udp                 # NCPM File Transfer
+psmond      1788/tcp                 # Predictive Monitor
+psmond      1788/udp                 # Hardware Predictive Monitor
+pmlockd     1889/tcp                 # SynerVision locking daemon
+pmlockd     1889/udp                 #
+nfsd        2049/udp   nfs           # NFS server daemon (clts)
+nfsd        2049/tcp   nfs           # NFS server daemon (cots)
+lockd       4045/udp                 # NFS lockd daemon/manager for udp 
+lockd       4045/tcp                 # NFS lockd daemon/manager for tcp 
+netdist     2106/tcp                 # update(1m) network distribution service
+cvmmon      2300/tcp                 # ClusterView Management cluster support
+hpidsadmin  2984/tcp              # HP-UX Host Intrusion Detection System admin
+hpidsadmin  2984/udp              # HP-UX Host Intrusion Detection System admin
+hpidsagent  2985/tcp              # HP-UX Host Intrusion Detection System agent
+hpidsagent  2985/udp              # HP-UX Host Intrusion Detection System agent
+hp-clic     3384/tcp                 #Cluster Management Services
+hp-clic     3384/udp                 #Hardware Management
+hacl-monitor   3542/tcp             # HA cluster monitor
+hacl-monitor   3542/udp             # HA cluster monitor
+rfa         4672/tcp                 # NS remote file access
+veesm       4789/tcp                 # HP VEE service manager
+hacl-hb     5300/tcp                 # High Availability (HA) Cluster heartbeat
+hacl-hb     5300/udp                 # High Availability (HA) Cluster heartbeat
+hacl-gs     5301/tcp                 # HA Cluster General Services
+hacl-gs     5301/udp                 # HA Cluster General Services
+hacl-cfg    5302/tcp                 # HA Cluster TCP configuration
+hacl-cfg    5302/udp                 # HA Cluster UDP configuration
+hacl-probe  5303/tcp                 # HA Cluster TCP probe
+hacl-probe  5303/udp                 # HA Cluster UDP probe
+hacl-local  5304/tcp                 # HA Cluster Commands
+hacl-local  5304/udp                 # HA Cluster Commands
+hacl-test   5305/tcp                 # HA Cluster Test
+hacl-dlm    5408/tcp                 # HA Cluster distributed lock manager
+lanmgrx.osB 5696/tcp                 # LAN Manager/X for B.00.00 OfficeShare
+hcserver    5710/tcp                 # HP Cooperative Services
+wbem-http   5988/tcp                 # Web-Based Enterprise Management HTTP
+wbem-http   5988/udp                 # Web-Based Enterprise Management HTTP
+wbem-https  5989/tcp                 # Web-Based Enterprise Management HTTPS
+wbem-https  5989/udp                 # Web-Based Enterprise Management HTTPS
+grmd        5999/tcp                 # graphics resource manager
+spc         6111/tcp                 # sub-process control
+desmevt     6868/tcp                 # DE/ Services Monitor, Event Service
+pdclientd   6874/tcp                 # Palladium print client daemon
+pdeventd    6875/tcp                 # Palladium print event daemon
+iasqlsvr    7489/tcp                 # Information Access
+recserv     7815/tcp                 # SharedX Receiver Service
+p7_c33upd   8545/tcp    #TSD acceSS7 configuration update RPC server
+p7_c33      8546/tcp    #TSD acceSS7 configuration RPC server
+p7_c32      8547/tcp    #TSD acceSS7 communications status RPC server
+p7_c35      8548/tcp    #TSD acceSS7 communications configuration RPC server
+p7_g06      8549/tcp    #TSD acceSS7 application version registration RPC server
+p7_e30      8550/tcp    #TSD acceSS7 event manager RPC server
+comms_normal     8551/tcp    # acceSS7 normal priority messages
+comms_high       8552/tcp    # acceSS7 high priority messages
+c34_main         8553/udp    # acceSS7 Inter-Server messages
+ftp-ftam    8868/tcp                 # FTP->FTAM Gateway
+mcsemon     9999/tcp                 # MC/System Environment monitor
+console     10000/tcp                # MC/System Environment console multiplexor
+actcp       31766/tcp                # ACT Call Processing Server
+SrpSiteDaemon    6178/tcp    # acceSS7 Statistics Remote Site query daemon
+SrpCentralDaemon 6179/tcp    # acceSS7 Statistics Central Server query daemon
+erdb_svr        35100/tcp    # acceSS7 Statistics Central Database
+erdb_bck        35101/tcp    # acceSS7 Statistics Database Backup
+hp-sco          19410/tcp    # HP SCO port number
+hp-sco          19410/udp    # HP SCO port number
+hp-sca          19411/tcp    # HP SCA port number
+hp-sca          19411/udp    # HP SCA port number
+
+#
+# Kerberos (Project Athena/MIT) services
+#
+kerberos5    88/udp   kdc     	     # Kerberos 5 kdc
+klogin       543/tcp                 # Kerberos rlogin -kfall
+kshell       544/tcp  krcmd          # Kerberos remote shell -kfall
+ekshell      545/tcp  krcmd          # Kerberos encrypted remote shell -kfall
+kerberos     750/udp  kdc            # Kerberos (server) udp -kfall
+kerberos     750/tcp  kdc            # Kerberos (server) tcp -kfall
+kerberos_master 751/tcp kadmin       # Kerberos kadmin
+krbupdate    760/tcp  kreg           # Kerberos registration -kfall
+kpasswd      761/tcp  kpwd           # Kerberos "passwd" -kfall
+eklogin     2105/tcp                 # Kerberos encrypted rlogin -kfall
+# The X10_LI server for each display listens on ports 5800 + display number.
+# The X10_MI server for each display listens on ports 5900 + display number.
+# The X11 server for each display listens on ports 6000 + display number.
+# The X11 font server listens on port 7000.
+# Do NOT associate other services with these ports.
+# Refer to the X documentation for details.
+
+hpoms-ci-lstn   5403/tcp	#SAP spooler support
+hpoms-dps-lstn  5404/tcp	#SAP spooler support
+samd            3275/tcp        # sam daemon
+
+dtspc           6112/tcp        #subprocess control
+nuekks      6897/tcp                 # nuekks daemon
+
+swat      901/tcp	# SAMBA Web-based Admin Tool
+io-dist-data    5728/tcp     #Dist. I/O Comm. Service Data and Control
+io-dist-group   5728/udp   #Dist. I/O Comm. Service Group Membership
+omni             5555/tcp    # DATA-PROTECTOR
+
+
+######   Added as per RFC C11110045 request  ######
+#                        
+#OpenEdge                        
+#                        
+#psd_adminserver   20000/tcp       # AdminServer
+#psd_adminport     20001/tcp       # AdminPort
+#psd_nameserver    20002/tcp       # NameServer
+#psd_db_agent      20003/tcp       # DB Agent
+#psd_explorer      20004/tcp       # Explorer
+
+#tomcat_ports      20100-20999/tcp # Tomcat Ports
+
+#databases         21000-21499/tcp # Databases
+is_prd_main        21000/tcp       # HP IndigoServe Production Main Database
+is_prd_com         21001/tcp       # HP IndigoServe Production Common Database
+is_itg_main        21010/tcp       # HP IndigoServe Integration Main Database
+is_itg_com         21011/tcp       # HP IndigoServe Integration Common Database
+is_qa_main         21020/tcp       # HP IndigoServe QA Main Database
+is_qa_com          21021/tcp       # HP IndigoServe QA Common Database
+is_dev_main        21030/tcp       # HP IndigoServe Development Main Database
+is_dev_com         21031/tcp       # HP IndigoServe Development Common Database
+is_dis_main        21040/tcp       # HP IndigoServe Distribution Main Database
+is_dis_com         21041/tcp       # HP IndigoServe Distribution Common Database
+qad_prd_mfg        21050/tcp       # QAD EE Production Database
+qad_prd_adm        21051/tcp       # QAD EE Production Admin Database
+qad_prd_hlp        21052/tcp       # QAD EE Production Help Database
+qad_prd_alt        21053/tcp       # QAD EE Production Alert Database
+qad_prd_qxo        21054/tcp       # QAD EE Production QXO Database
+qad_prd_qxe        21055/tcp       # QAD EE Production QXI Database
+qad_prd_bpm        21056/tcp       # QAD EE Production BPM Database
+qad_prd_qra        21057/tcp       # QAD EE Production QRA Database
+qad_prd_cus        21059/tcp       # QAD EE Production HP Custom Database
+qad_itg_mfg        21060/tcp       # QAD EE Integration Database
+qad_itg_adm        21061/tcp       # QAD EE Integration Admin Database
+qad_itg_hlp        21062/tcp       # QAD EE Integration Help Database
+qad_itg_alt        21063/tcp       # QAD EE Integration Alert Database
+qad_itg_qxo        21064/tcp       # QAD EE Integration QXO Database
+qad_itg_qxe        21065/tcp       # QAD EE Integration QXI Database
+qad_itg_bpm        21066/tcp       # QAD EE Integration BPM Database
+qad_itg_qra        21067/tcp       # QAD EE Integration QRA Database
+qad_itg_cus        21069/tcp       # QAD EE Integration HP Custom Database
+qad_qa_mfg         21070/tcp       # QAD EE QA Database
+qad_qa_adm         21071/tcp       # QAD EE QA Admin Database
+qad_qa_hlp         21072/tcp       # QAD EE QA Help Database
+qad_qa_alt         21073/tcp       # QAD EE QA Alert Database
+qad_qa_qxo         21074/tcp       # QAD EE QA QXO Database
+qad_qa_qxe         21075/tcp       # QAD EE QA QXI Database
+qad_qa_bpm         21076/tcp       # QAD EE QA BPM Database
+qad_qa_qra         21077/tcp       # QAD EE QA QRA Database
+qad_qa_cus         21079/tcp       # QAD EE QA HP Custom Database
+qad_dev_mfg        21080/tcp       # QAD EE Development Database
+qad_dev_adm        21081/tcp       # QAD EE Development Admin Database
+qad_dev_hlp        21082/tcp       # QAD EE Development Help Database
+qad_dev_alt        21083/tcp       # QAD EE Development Alert Database
+qad_dev_qxo        21084/tcp       # QAD EE Development QXO Database
+qad_dev_qxe        21085/tcp       # QAD EE Development QXI Database
+qad_dev_bpm        21086/tcp       # QAD EE Development BPM Database
+qad_dev_qra        21087/tcp       # QAD EE Development QRA Database
+qad_dev_cus        21089/tcp       # QAD EE Development HP Custom Database
+qad_dis_mfg        21090/tcp       # QAD EE Distribution Database
+qad_dis_adm        21091/tcp       # QAD EE Distribution Admin Database
+qad_dis_hlp        21092/tcp       # QAD EE Distribution Help Database
+qad_dis_alt        21093/tcp       # QAD EE Distribution Alert Database
+qad_dis_qxo        21094/tcp       # QAD EE Distribution QXO Database
+qad_dis_qxe        21095/tcp       # QAD EE Distribution QXI Database
+qad_dis_bpm        21096/tcp       # QAD EE Distribution BPM Database
+qad_dis_qra        21097/tcp       # QAD EE Distribution QRA Database
+qad_dis_cus        21099/tcp       # QAD EE Distribution HP Custom Database
+csi_prd_css        21100/tcp       # CSS Internal Production Database
+csi_prd_cus        21101/tcp       # CSS Internal Production HP Custom Database
+csi_itg_css        21110/tcp       # CSS Internal Integration Database
+csi_itg_cus        21111/tcp       # CSS Internal Integration HP Custom Database
+csi_qa_css         21120/tcp       # CSS Internal QA Database
+csi_qa_cus         21121/tcp       # CSS Internal QA HP Custom Database
+csi_dev_css        21130/tcp       # CSS Internal Development Database
+csi_dev_cus        21131/tcp       # CSS Internal Development HP Custom Database
+csi_dis_css        21140/tcp       # CSS Internal Distribution Database
+csi_dis_cus        21141/tcp       # CSS Internal Distribution HP Custom Database
+sys_prd_pm         21400/tcp       # System Production ProMonitor Database
+sys_itg_pm         21410/tcp       # System Integration ProMonitor Database
+sys_qa_pm          21420/tcp       # System QA ProMonitor Database
+sys_dev_pm         21430/tcp       # System Development ProMonitor Database
+sys_dis_pm         21440/tcp       # System Distribution ProMonitor Database
+
+#databases_sql     21500-21999/tcp # Databases SQL
+qad_prd_mfg_sql    21550/tcp       # QAD EE Production Database (SQL)
+qad_prd_alt_sql    21553/tcp       # QAD EE Production Alert Database (SQL)
+qad_prd_bpm_sql    21556/tcp       # QAD EE Production BPM Database (SQL)
+qad_prd_cus_sql    21559/tcp       # QAD EE Production HP Custom Database (SQL)
+qad_itg_mfg_sql    21560/tcp       # QAD EE Integration Database (SQL)
+qad_itg_alt_sql    21563/tcp       # QAD EE Integration Alert Database (SQL)
+qad_itg_bpm_sql    21566/tcp       # QAD EE Integration BPM Database (SQL)
+qad_itg_cus_sql    21569/tcp       # QAD EE Integration HP Custom Database (SQL)
+qad_qa_mfg_sql     21570/tcp       # QAD EE QA Database (SQL)
+qad_qa_alt_sql     21573/tcp       # QAD EE QA Alert Database (SQL)
+qad_qa_bpm_sql     21576/tcp       # QAD EE QA BPM Database (SQL)
+qad_qa_cus_sql     21579/tcp       # QAD EE QA HP Custom Database (SQL)
+qad_dev_mfg_sql    21580/tcp       # QAD EE Development Database (SQL)
+qad_dev_alt_sql    21583/tcp       # QAD EE Development Alert Database (SQL)
+qad_dev_bpm_sql    21586/tcp       # QAD EE Development BPM Database (SQL)
+qad_dev_cus_sql    21589/tcp       # QAD EE Development HP Custom Database (SQL)
+qad_dis_mfg_sql    21590/tcp       # QAD EE Distribution Database (SQL)
+qad_dis_alt_sql    21593/tcp       # QAD EE Distribution Alert Database (SQL)
+qad_dis_bpm_sql    21596/tcp       # QAD EE Distribution BPM Database (SQL)
+qad_dis_cus_sql    21599/tcp       # QAD EE Distribution HP Custom Database (SQL)
+
+#webspeed_broker   24000-24499/tcp # WebSpeed Broker
+#qad_prd_qadui_ws  24050/tcp       # QAD EE Production NetUI WebSpeed Broker
+#qad_itg_qadui_ws  24060/tcp       # QAD EE Integration NetUI WebSpeed Broker
+#qad_qa_qadui_ws   24070/tcp       # QAD EE QA NetUI WebSpeed Broker
+#qad_dev_qadui_ws  24080/tcp       # QAD EE Development NetUI WebSpeed Broker
+#qad_dis_qadui_ws  24090/tcp       # QAD EE Distribution NetUI WebSpeed Broker
+#csi_prd_css_ws    24100/tcp       # CSS Internal Production Main WebSpeed Broker
+#csi_itg_css_ws    24110/tcp       # CSS Internal Integration Main WebSpeed Broker
+#csi_qa_css_ws     24120/tcp       # CSS Internal QA Main WebSpeed Broker
+#csi_dev_css_ws    24130/tcp       # CSS Internal Development Main WebSpeed Broker
+#csi_dis_css_ws    24140/tcp       # CSS Internal Distribution Main WebSpeed Broker
+
+#appserver_broker  24500-24999/tcp # AppServer Broker
+#is_prd_main_as    24500/tcp       # HP IndigoServe Production Main AppServer Broker
+#is_itg_main_as    24510/tcp       # HP IndigoServe Integration Main AppServer Broker
+#is_qa_main_as     24520/tcp       # HP IndigoServe QA Main AppServer Broker
+#is_dev_main_as    24530/tcp       # HP IndigoServe Development Main AppServer Broker
+#is_dis_main_as    24540/tcp       # HP IndigoServe Distribution Main AppServer Broker
+#qad_prd_qadfin_as 24550/tcp       # QAD EE Production FIN AppServer Broker
+#qad_prd_qadsi_as  24551/tcp       # QAD EE Production SI AppServer Broker
+#qad_prd_qadui_as  24552/tcp       # QAD EE Production UI AppServer Broker
+#qad_prd_qxosi_as  24553/tcp       # QAD EE Production QXO SI AppServer Broker
+#qad_prd_qxoui_as  24554/tcp       # QAD EE Production QXO UI AppServer Broker
+#qad_prd_qadqra_as 24555/tcp       # QAD EE Production QRA AppServer Broker
+#qad_itg_qadfin_as 24560/tcp       # QAD EE Integration FIN AppServer Broker
+#qad_itg_qadsi_as  24561/tcp       # QAD EE Integration SI AppServer Broker
+#qad_itg_qadui_as  24562/tcp       # QAD EE Integration UI AppServer Broker
+#qad_itg_qxosi_as  24563/tcp       # QAD EE Integration QXO SI AppServer Broker
+#qad_itg_qxoui_as  24564/tcp       # QAD EE Integration QXO UI AppServer Broker
+#qad_itg_qadqra_as 24565/tcp       # QAD EE Integration QRA AppServer Broker
+#qad_qa_qadfin_as  24570/tcp       # QAD EE QA FIN AppServer Broker
+#qad_qa_qadsi_as   24571/tcp       # QAD EE QA SI AppServer Broker
+#qad_qa_qadui_as   24572/tcp       # QAD EE QA UI AppServer Broker
+#qad_qa_qxosi_as   24573/tcp       # QAD EE QA QXO SI AppServer Broker
+#qad_qa_qxoui_as   24574/tcp       # QAD EE QA QXO UI AppServer Broker
+#qad_qa_qadqra_as  24575/tcp       # QAD EE QA QRA AppServer Broker
+#qad_dev_qadfin_as 24580/tcp       # QAD EE Development FIN AppServer Broker
+#qad_dev_qadsi_as  24581/tcp       # QAD EE Development SI AppServer Broker
+#qad_dev_qadui_as  24582/tcp       # QAD EE Development UI AppServer Broker
+#qad_dev_qxosi_as  24583/tcp       # QAD EE Development QXO SI AppServer Broker
+#qad_dev_qxoui_as  24584/tcp       # QAD EE Development QXO UI AppServer Broker
+#qad_dev_qadqra_as 24585/tcp       # QAD EE Development QRA AppServer Broker
+#qad_dis_qadfin_as 24590/tcp       # QAD EE Distribution FIN AppServer Broker
+#qad_dis_qadsi_as  24591/tcp       # QAD EE Distribution SI AppServer Broker
+#qad_dis_qadui_as  24592/tcp       # QAD EE Distribution UI AppServer Broker
+#qad_dis_qxosi_as  24593/tcp       # QAD EE Distribution QXO SI AppServer Broker
+#qad_dis_qxoui_as  24594/tcp       # QAD EE Distribution QXO UI AppServer Broker
+#qad_dis_qadqra_as 24595/tcp       # QAD EE Distribution QRA AppServer Broker
+#sys_prd_syspub_as 24900/tcp       # System Production Publish AppServer Broker
+#sys_itg_syspub_as 24910/tcp       # System Integration Publish AppServer Broker
+#sys_qa_syspub_as  24920/tcp       # System QA Publish AppServer Broker
+#sys_dev_syspub_as 24930/tcp       # System Development Publish AppServer Broker
+#sys_dis_syspub_as 24940/tcp       # System Distribution Publish AppServer Broker
+
+#webspeed_agents   25000-29999/tcp # WebSpeed Agents
+#qad_*_*_ws        25500-25999/tcp # QAD EE WebSpeed Agents
+#qad_prd_qadui_ws  25500-25999/tcp # QAD EE Production NetUI WebSpeed Agents
+#qad_itg_qadui_ws  25500-25999/tcp # QAD EE Integration NetUI WebSpeed Agents
+#qad_qa_qadui_ws   25500-25999/tcp # QAD EE QA NetUI WebSpeed Agents
+#qad_dev_qadui_ws  25500-25999/tcp # QAD EE Development NetUI WebSpeed Agents
+#qad_dis_qadui_ws  25500-25999/tcp # QAD EE Distribution NetUI WebSpeed Agents
+#csi_*_*_ws        26000-26499/tcp # CSS Internal WebSpeed Agents
+#csi_prd_css_ws    26000-26499/tcp # CSS Internal Production Main WebSpeed Agents
+#csi_itg_css_ws    26000-26499/tcp # CSS Internal Integration Main WebSpeed Agents
+#csi_qa_css_ws     26000-26499/tcp # CSS Internal QA Main WebSpeed Agents
+#csi_dev_css_ws    26000-26499/tcp # CSS Internal Development Main WebSpeed Agents
+#csi_dis_css_ws    26000-26499/tcp # CSS Internal Distribution Main WebSpeed Agents
+
+#appserver_servers 30000-34999/tcp # AppServer Servers
+#is_*_*_as         30000-30499/tcp # HP IndigoServe AppServer Servers
+#is_prd_main_as    30000-30499/tcp # HP IndigoServe Production Main AppServer Servers
+#is_itg_main_as    30000-30499/tcp # HP IndigoServe Integration Main AppServer Servers
+#is_qa_main_as     30000-30499/tcp # HP IndigoServe QA Main AppServer Servers
+#is_dev_main_as    30000-30499/tcp # HP IndigoServe Development Main AppServer Servers
+#is_dis_main_as    30000-30499/tcp # HP IndigoServe Distribution Main AppServer Servers
+#qad_*_*_as        30500-30999/tcp # QAD EE AppServer Servers
+#qad_prd_qadfin_as 30500-30999/tcp # QAD EE Production FIN AppServer Servers
+#qad_prd_qadsi_as  30500-30999/tcp # QAD EE Production SI AppServer Servers
+#qad_prd_qadui_as  30500-30999/tcp # QAD EE Production UI AppServer Servers
+#qad_prd_qxosi_as  30500-30999/tcp # QAD EE Production QXO SI AppServer Servers
+#qad_prd_qxoui_as  30500-30999/tcp # QAD EE Production QXO UI AppServer Servers
+#qad_prd_qadqra_as 30500-30999/tcp # QAD EE Production QRA AppServer Servers
+#qad_itg_qadfin_as 30500-30999/tcp # QAD EE Integration FIN AppServer Servers
+#qad_itg_qadsi_as  30500-30999/tcp # QAD EE Integration SI AppServer Servers
+#qad_itg_qadui_as  30500-30999/tcp # QAD EE Integration UI AppServer Servers
+#qad_itg_qxosi_as  30500-30999/tcp # QAD EE Integration QXO SI AppServer Servers
+#qad_itg_qxoui_as  30500-30999/tcp # QAD EE Integration QXO UI AppServer Servers
+#qad_itg_qadqra_as 30500-30999/tcp # QAD EE Integration QRA AppServer Servers
+#qad_qa_qadfin_as  30500-30999/tcp # QAD EE QA FIN AppServer Servers
+#qad_qa_qadsi_as   30500-30999/tcp # QAD EE QA SI AppServer Servers
+#qad_qa_qadui_as   30500-30999/tcp # QAD EE QA UI AppServer Servers
+#qad_qa_qxosi_as   30500-30999/tcp # QAD EE QA QXO SI AppServer Servers
+#qad_qa_qxoui_as   30500-30999/tcp # QAD EE QA QXO UI AppServer Servers
+#qad_qa_qadqra_as  30500-30999/tcp # QAD EE QA QRA AppServer Servers
+#qad_dev_qadfin_as 30500-30999/tcp # QAD EE Development FIN AppServer Servers
+#qad_dev_qadsi_as  30500-30999/tcp # QAD EE Development SI AppServer Servers
+#qad_dev_qadui_as  30500-30999/tcp # QAD EE Development UI AppServer Servers
+#qad_dev_qxosi_as  30500-30999/tcp # QAD EE Development QXO SI AppServer Servers
+#qad_dev_qxoui_as  30500-30999/tcp # QAD EE Development QXO UI AppServer Servers
+#qad_dev_qadqra_as 30500-30999/tcp # QAD EE Development QRA AppServer Servers
+#qad_dis_qadfin_as 30500-30999/tcp # QAD EE Distribution FIN AppServer Servers
+#qad_dis_qadsi_as  30500-30999/tcp # QAD EE Distribution SI AppServer Servers
+#qad_dis_qadui_as  30500-30999/tcp # QAD EE Distribution UI AppServer Servers
+#qad_dis_qxosi_as  30500-30999/tcp # QAD EE Distribution QXO SI AppServer Servers
+#qad_dis_qxoui_as  30500-30999/tcp # QAD EE Distribution QXO UI AppServer Servers
+#qad_dis_qadqra_as 30500-30999/tcp # QAD EE Distribution QRA AppServer Servers
+#sys_*_*_as        34000-34499/tcp # System AppServer Servers
+#sys_prd_syspub_as 34000-34499/tcp # System Production Publish AppServer Servers
+#sys_itg_syspub_as 34000-34499/tcp # System Integration Publish AppServer Servers
+#sys_qa_syspub_as  34000-34499/tcp # System QA Publish AppServer Servers
+#sys_dev_syspub_as 34000-34499/tcp # System Development Publish AppServer Servers
+#sys_dis_syspub_as 34000-34499/tcp # System Distribution Publish AppServer Servers
+
+#psd_client_server 35000-39999/tcp # Client Server
+

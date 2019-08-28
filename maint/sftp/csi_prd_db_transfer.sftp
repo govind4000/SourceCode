@@ -1,0 +1,180 @@
+#!/usr/bin/sh
+# Shellscript: csi_prd_db_transfer.sftp
+# Description: Include with logic for sftp
+#
+# %Z% SCCS-Id:%P% %I% %G% %U% tkl
+# REVISION: eE   LAST MODIFIED: 14 Jul 2015  BY: HP/RDU
+# REVISION: EE   LAST MODIFIED: 20 Jul 2015  BY: HP/TKL
+
+################################################################################
+# FUNCTION sftpTransfer IS THE ENTRY POINT FOR ANY CHANGES TO THIS SCRIPT.
+# DO NOT CHANGE THE NAME OF THIS FUNCTION!
+# THE sftp.inc LIBRARY EXPECTS THIS FUNCTION TO BE PRESENT.
+# REMOVING OR RENAMING WILL CAUSE THE SCRIPT TO FAIL.
+# YOU ARE FREE TO CREATE ADDITIONAL CUSTOM FUNCTIONS AND CALL THEM FROM 
+# WITHIN sftpTransfer.
+################################################################################
+
+sftpTransfer () {
+   
+   # SFTP HOST
+   sftpRemoteHost="qaddb-pro.houston.hpicorp.net"
+   
+   # SFTP USER
+   sftpRemoteUser="qadeepro"
+   
+   # SFTP PRIVATE KEY (OPTIONAL; DEFAULT IS id_rsa IN .ssh DIRECTORY)
+   sftpPrivateKey="/home/qadeepro/.ssh/id_rsa_qadeepro"
+   
+   # OPTIONAL FUNCTION CALL; WILL BE AUTO-EXECUTED UPON FIRST SFTP COMMAND
+   sftpSetConnection "${sftpRemoteHost}" "${sftpRemoteUser}" "${sftpPrivateKey}"
+
+   ######################################################################
+   
+   # PATTERN(S) OF FILES TO TRANSFER (E.G "*.doc *.docx ABC?.txt" )
+   # SEPARATE INDIVIDUAL PATTERNS BY A SPACE
+   # WILDCARDS * AND ? ARE ALLOWED
+   sftpRemoteFilePattern="*.vol*"
+   
+   # SFTP SOURCE DIRECTORY
+   sftpRemoteDirectory="/opt/shared/backup/csi_prd_css"
+   
+   # SFTP TARGET DIRECTORY
+   sftpLocalDirectory="/opt/shared/backup/MtP"
+
+   # SFTP TRANSFER OVERWRITE ("yes"/"no")
+   # "yes" OVERWRITES TARGET FILES
+   # "no" THROWS AN ERROR IN CASE THE TARGET FILE EXISTS
+   sftpOptionOverwrite="no"
+   
+   # SFTP STAGED TRANSFER ("yes"/"no")
+   # "yes" STAGED TRANSFER, I.E. TRANSFER TO INTERMEDIATE FILE FIRST
+   # "no" DIRECT TRANSFER TO TARGET FILE
+   sftpOptionStagedTransfer="no"
+
+   # SFTP TARGET STAGING DIRECTORY (OPTIONAL)
+   # APPLIES ONLY WHEN sftpOptionStagedTransfer IS "yes"
+   # IF LEFT BLANK TARGET DIRECTORY WILL ACT AS STAGING DIRECTORY
+   sftpLocalDirectoryStaging=""
+   
+   # SFTP TRANSFER ERROR ACTION ("none"/"move"/"delete")
+   # "none" LEAVES SOURCE FILE WHERE IT IS
+   # "move" MOVES THE SOURCE FILE TO AN ERROR DIRECTORY
+   # "delete" DELETES THE SOURCE FILE (NOT COMMON I SUPPOSE, BUT IT CLEANS UP)
+   sftpOptionActionError="none"
+   
+   # SFTP TRANSFER ERROR DIRECTORY
+   # APPLIES ONLY WHEN sftpOptionActionError="move"
+   sftpRemoteDirectoryError=""
+   
+   # SFTP TRANSFER SUCCESS ACTION ("none"/"archive"/"delete")
+   # "none" LEAVES SOURCE FILE WHERE IT IS
+   # "archive" MOVES THE SOURCE FILE TO AN ARCHIVE DIRECTORY
+   # "delete" DELETES THE SOURCE FILE
+   sftpOptionActionSuccess="none"
+   
+   # SFTP TRANSFER ARCHIVE DIRECTORY
+   # APPLIES ONLY WHEN sftpOptionActionSuccess="archive"
+   sftpRemoteDirectoryArchive="/opt/shared/backup/transferred"
+
+   # FETCH FILES MATCHING THE PATTERN LIST
+   # PARAMETERS:
+   # - FILE PATTERN
+   # - REMOTE SOURCE DIRECTORY
+   # - LOCAL TARGET DIRECTORY
+   # - LOCAL STAGING DIRECTORY (OPTIONAL)
+   # - REMOTE ERROR DIRECTORY (ONLY APPLIES WHEN ACTION ERROR=MOVE)
+   # - REMOTE ARCHIVE DIRECTORY ONLY APPLIES WHEN ACTION SUCCESS=ARCHIVE)
+   
+   #echo "sftpRemoteFileListGet \c"
+   sftpRemoteFileListGet               \
+      "${sftpRemoteFilePattern}"       \
+      "${sftpRemoteDirectory}"         \
+      "${sftpLocalDirectory}"          \
+      "${sftpLocalDirectoryStaging}"   \
+      "${sftpRemoteDirectoryError}"    \
+      "${sftpRemoteDirectoryArchive}"
+
+   # CSS Custom Database	 
+   sftpRemoteDirectory="/opt/shared/backup/csi_prd_cus"
+   sftpLocalDirectory="/opt/shared/backup/MtP"
+
+   sftpRemoteFileListGet               \
+      "${sftpRemoteFilePattern}"       \
+      "${sftpRemoteDirectory}"         \
+      "${sftpLocalDirectory}"          \
+      "${sftpLocalDirectoryStaging}"   \
+      "${sftpRemoteDirectoryError}"    \
+      "${sftpRemoteDirectoryArchive}"
+	  
+   ######################################################################
+   
+   # PATTERN(S) OF FILES TO TRANSFER (E.G "*.doc *.docx ABC?.txt" )
+   # SEPARATE INDIVIDUAL PATTERNS BY A SPACE
+   # WILDCARDS * AND ? ARE ALLOWED
+   sftpLocalFilePattern="*.tar.gz"
+
+   # SFTP SOURCE DIRECTORY
+   sftpLocalDirectory="/opt/shared/backup"
+   
+   # SFTP TARGET DIRECTORY
+   sftpRemoteDirectory="/opt/shared/backup"
+
+   # SFTP TRANSFER OVERWRITE ("yes"/"no")
+   # "yes" OVERWRITES TARGET FILES
+   # "no" THROWS AN ERROR IN CASE THE TARGET FILE EXISTS
+   sftpOptionOverwrite="no"
+   
+   # SFTP TARGET STAGING DIRECTORY (OPTIONAL)
+   # APPLIES ONLY WHEN sftpOptionStagedTransfer IS "yes"
+   # IF LEFT BLANK TARGET DIRECTORY WILL ACT AS STAGING DIRECTORY
+   sftpRemoteDirectoryStaging=""
+   
+   # SFTP TRANSFER ERROR ACTION ("none"/"move"/"delete")
+   # "none" LEAVES SOURCE FILE WHERE IT IS
+   # "move" MOVES THE SOURCE FILE TO AN ERROR DIRECTORY
+   # "delete" DELETES THE SOURCE FILE (NOT COMMON I SUPPOSE, BUT IT CLEANS UP)
+   sftpOptionActionError="none"
+   
+   # SFTP TRANSFER ERROR DIRECTORY
+   # APPLIES ONLY WHEN sftpOptionActionError="move"
+   sftpLocalDirectoryError=""
+   
+   # SFTP TRANSFER SUCCESS ACTION ("none"/"archive"/"delete")
+   # "none" LEAVES SOURCE FILE WHERE IT IS
+   # "archive" MOVES THE SOURCE FILE TO AN ARCHIVE DIRECTORY
+   # "delete" DELETES THE SOURCE FILE
+   sftpOptionActionSuccess="archive"
+   
+   # SFTP TRANSFER ARCHIVE DIRECTORY
+   # APPLIES ONLY WHEN sftpOptionActionSuccess="archive"
+   sftpLocalDirectoryArchive="/opt/shared/backup/transferred"
+   
+   # UPLOAD FILES MATCHING THE PATTERN LIST
+   # PARAMETERS:
+   # - FILE PATTERN
+   # - LOCAL SOURCE DIRECTORY
+   # - REMOTE TARGET DIRECTORY
+   # - REMOTE STAGING DIRECTORY (OPTIONAL)
+   # - LOCAL ERROR DIRECTORY (ONLY APPLIES WHEN ACTION ERROR=MOVE)
+   # - LOCAL ARCHIVE DIRECTORY ONLY APPLIES WHEN ACTION SUCCESS=ARCHIVE)
+   
+   #echo "sftpLocalFileListPut \c"
+   #sftpLocalFileListPut                \
+   #   "${sftpLocalFilePattern}"        \
+   #   "${sftpLocalDirectory}"          \
+   #   "${sftpRemoteDirectory}"         \
+   #   "${sftpRemoteDirectoryStaging}"  \
+   #   "${sftpLocalDirectoryError}"     \
+   #   "${sftpLocalDirectoryArchive}"
+}
+
+################################################################################
+# PLACEHOLDER FOR CUSTOM FUNCTIONS
+################################################################################
+
+################################################################################
+# LEAVE THE LIBRARY INCLUDE AT THE END OF THIS SCRIPT.
+################################################################################
+. "$(dirname ${0})/sftp.inc" "$@"
+################################################################################
