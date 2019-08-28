@@ -10,3 +10,4 @@
 #ssh -tl qadeeitg qadee-itg.austin.hpicorp.net /opt/qadee/local/bin/admin/cpu_util_itg.alert
         
 #ssh -tl qadeeitg qadee-itg.austin.hpicorp.net /opt/qadee/local/bin/admin/cpu_util_qa.alert
+
