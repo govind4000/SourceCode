@@ -1,0 +1,29 @@
+#!/usr/bin/ksh
+if [ ${#} -eq 0 ]
+then
+   echo "USAGE: renamefiles {path} {search-string} {replace-string}"
+   exit 0
+fi
+
+if [ -z "$2" ] 
+then 
+   echo "USAGE: renamefiles {path} {search-string} {replace-string}"
+   echo "Provide {search-string} {replace-string}"
+   exit 0
+fi
+
+
+if [ -z "$3" ] 
+then 
+   echo "USAGE: renamefiles {path} {search-string} {replace-string}"
+   echo "Provide {replace-string}"
+   exit 0
+fi
+
+
+for f in `ls $1/*$2*`
+do
+   echo "Renaming " $f " to " `echo $f | sed s/$2/$3/`
+#   mv $1/$f "`echo $1/$f | sed s/$2/$3/`"
+   mv $f "`echo $f | sed s/$2/$3/`"
+done
